@@ -1,0 +1,146 @@
+[
+  {
+    "part": 1,
+    "title": "Day-ahead wind intelligence for the UK market",
+    "image": "02-decision.png",
+    "crop_top": 0,
+    "takeaway": "Empowering UK day-ahead procurement with auditable wind intelligence.",
+    "note": "Pilot project for UK energy utility. Real January 2026 Elexon BMRS WINDFOR and FUELHH stream data.",
+    "narration": "Welcome to Windward, a decision-time renewable intelligence platform developed specifically for the UK wholesale power trading desk. As an energy utility buying in the day-ahead auction, your mission is to meet consumer electricity demand reliably by calculating exactly how much additional power, such as thermal generation, must be procured beyond weather-dependent wind. Because purchase decisions must be locked in one day prior to delivery, traders cannot rely on hindsight; they need the exact latest forecast available at the decision gate, coupled with quantified historical forecast error to hedge procurement risk. Windward integrates live national wind actuals and forecasts from Elexon BMRS to deliver complete transparency."
+  },
+  {
+    "part": 1,
+    "title": "Decision desk: Point-in-time forecast curves",
+    "image": "02-decision.png",
+    "crop_top": 0,
+    "takeaway": "Decision date maps strictly to next delivery day.",
+    "note": "January 2026 decision dates cover delivery from 2 January to 1 February. Adjustable cutoffs.",
+    "narration": "The Decision Desk anchors directly on the day the purchase decision is made. For January 2026, selecting January 15 immediately presents the forecast curve for delivery on January 16. Traders can configure their exact auction cutoff, such as nine AM for the desk assumption, or pre-EPEX and pre-N2EX presets, along with an optional data receipt buffer. The system selects the newest eligible forecast published before that cutoff. For this delivery day, we see an average forecast of 7,930 megawatts and 95.2 gigawatt-hours of covered energy, with an average forecast age of just 1.5 hours at decision time."
+  },
+  {
+    "part": 1,
+    "title": "Granular evidence: Full publication audit trail",
+    "image": "02-decision.png",
+    "crop_top": 650,
+    "takeaway": "Every half-hour interval discloses its publication timestamp and vintage.",
+    "note": "CSV exports retain decision cutoff, delivery target, publication time, and snapshot hash.",
+    "narration": "Trust requires granular verification. Below the main curve, an interactive interval table reveals the exact pedigree of every point. Each row details the target delivery half-hour, forecasted megawatts, precise Elexon publication timestamp, forecast age at auction cutoff, and revisions from earlier runs. Every view supports full CSV export tagged with a cryptographic SHA-256 snapshot hash. Rather than pretending a single forecast run generated the entire delivery day, Windward makes the composition of different publication vintages completely transparent to analysts and risk officers."
+  },
+  {
+    "part": 1,
+    "title": "Hindsight analysis: Quantifying outturns and shortfall",
+    "image": "03-hindsight.png",
+    "crop_top": 200,
+    "takeaway": "Deliberate separation between decision support and retrospective review.",
+    "note": "Default decision views exclude actuals. Positive error denotes wind underdelivery.",
+    "narration": "Decision support must remain strictly separate from retrospective evaluation. Activating the hindsight toggle overlays actual outturns from Elexon's FUELHH stream. An explicit warning alerts users that outturn data was not available when the day-ahead auction cleared. We use the industry standard error convention: forecast minus actual. A positive error signifies wind underdelivery, indicating that thermal generation had to be dispatched or imbalance cashout paid. Visualizing these misses against the decision-time curve allows the desk to immediately spot ramp mismatches and systemic forecast biases."
+  },
+  {
+    "part": 1,
+    "title": "Accuracy lab: Rigorous quantitative error evaluation",
+    "image": "06-accuracy.png",
+    "crop_top": 0,
+    "takeaway": "Comprehensive January 2026 performance: MAE, RMSE, bias, and WAPE.",
+    "note": "Real Elexon January 2026 results: MAE 2,022 MW, RMSE 2,497 MW, Bias +1,746 MW, WAPE 17.9%.",
+    "narration": "The Accuracy Lab evaluates January 2026 forecast performance across multiple quantitative dimensions rather than a single misleading metric. For the full month across all 744 matched intervals, the Mean Absolute Error was 2,022 megawatts, while Root Mean Square Error reached 2,497 megawatts, penalizing extreme forecast swings. Crucially, signed mean bias was positive 1,746 megawatts, revealing that national wind was systematically over-forecasted. In fact, wind underdelivered against the day-ahead forecast in 84.7 percent of intervals. Weighted Absolute Percentage Error was 17.9 percent, providing a stable relative metric."
+  },
+  {
+    "part": 1,
+    "title": "Temporal profiles: Diurnal patterns and lead-time decay",
+    "image": "06-accuracy.png",
+    "crop_top": 550,
+    "takeaway": "Error breakdowns by daily outturn, settlement period, and forecast lead time.",
+    "note": "Interactive daily bars drill straight back into the relevant Decision Desk snapshot.",
+    "narration": "To manage balancing risks, traders need to know when errors typically occur. The Accuracy Lab breaks down performance across time. The daily bar chart highlights volatile delivery days, allowing a one-click drill down into any specific day's decision snapshot. The hourly breakdown illustrates diurnal error shapes across UK settlement periods, while the horizon analysis measures how forecast accuracy degrades as lead time increases. These empirical insights help the trading desk price volumetric risk directly into day-ahead bids."
+  },
+  {
+    "part": 1,
+    "title": "Honest uncertainty: Respecting data resolution and gaps",
+    "image": "05-gaps.png",
+    "crop_top": 180,
+    "takeaway": "Hourly Elexon WINDFOR intervals are never artificially interpolated.",
+    "note": "Coverage is explicitly 24/48 intervals. Uncertainty bands use strictly prior-only observations.",
+    "narration": "A core strength of Windward is technical integrity. Elexon's WINDFOR stream publishes forecasts on an hourly cadence, whereas FUELHH actuals arrive every half hour. Rather than smoothing or fabricating synthetic half-hourly numbers, Windward reports the exact 24 matching intervals and clearly discloses 50 percent interval coverage with partial energy totals. Furthermore, the empirical uncertainty band uses pooled residuals strictly from earlier January decision dates, ensuring no future error leakage occurs in early January."
+  },
+  {
+    "part": 1,
+    "title": "Methodology & client impact: A solid foundation",
+    "image": "07-method.png",
+    "crop_top": 0,
+    "takeaway": "Clear operational boundaries and transparent Elexon provenance.",
+    "note": "National Elexon wind data alone. Ready to integrate with utility portfolio demand.",
+    "narration": "The Data and Methodology view presents the complete analytical contract: dataset endpoints, formulas, quality checks, and cryptographic hashes. We clearly delineate operational scope: national Elexon wind generation is a crucial baseline, though individual utility thermal procurement also depends on contracted portfolio hedges and consumer demand. Windward provides your trading desk with an auditable, quantified wind forecast foundation that eliminates guesswork, minimizes imbalance exposure, and optimizes day-ahead thermal procurement."
+  },
+  {
+    "part": 2,
+    "title": "Technical review: Lean, decoupled architecture",
+    "image": "09-overview.png",
+    "crop_top": 0,
+    "takeaway": "FastAPI + React. Immutable snapshot store. Decoupled ETL.",
+    "note": "Single-origin delivery. Zero database overhead for fixed-window pilot scope.",
+    "narration": "Moving to the internal technical lead review: our system architecture is intentionally lean, auditable, and decoupled. The backend is written in Python using FastAPI, providing strict type validation, asynchronous performance, and security hardening. The frontend is a modular React single-page application served from the same origin, eliminating cross-origin complexity. All analysis operates over an immutable, checksummed historical snapshot. Decoupling data ingestion from web request handling ensures deterministic performance with zero database overhead."
+  },
+  {
+    "part": 2,
+    "title": "Ingestion pipeline: Resilient Elexon stream integration",
+    "image": "10-architecture.png",
+    "crop_top": 0,
+    "takeaway": "Batch extraction of WINDFOR and FUELHH streams with atomic replacement.",
+    "note": "Partitioned daily caches, SHA-256 manifests, exponential backoff, and deduplication.",
+    "narration": "The ingestion pipeline in backend app ingest connects directly to Elexon's BMRS stream APIs. It downloads publication windows for WINDFOR and FUELHH WIND, applying exponential backoff and retry handling for HTTP 429 and transient transport errors. Raw daily responses are hashed and cached on disk. The ingest pipeline normalizes payloads, handles settlement periods, strips non-wind fuels, deduplicates exact timestamps, quarantines conflicting records, and performs an atomic filesystem replace of data snapshot json."
+  },
+  {
+    "part": 2,
+    "title": "As-of temporal correctness: Preventing look-ahead bias",
+    "image": "15-source.png",
+    "crop_top": 0,
+    "takeaway": "Strict as-of filtering prevents future forecast and actual leakage.",
+    "note": "Inspect source in backend/app/domain.py. Pure functions with London timezone awareness.",
+    "narration": "Preventing look-ahead bias is paramount in energy trading systems. In backend app domain, our Store class enforces two separate availability guards. First, for any target interval, only forecasts with publishTime earlier than or equal to the decision cutoff minus availability buffer are considered. Second, when computing decision-time historical calibration, actual outturns are strictly guarded: an interval must be fully completed and its publication timestamp must precede the decision time. Future actual revisions cannot contaminate historical decision samples."
+  },
+  {
+    "part": 2,
+    "title": "Analytical domain: Exact matching and robust metrics",
+    "image": "12-analysis.png",
+    "crop_top": 0,
+    "takeaway": "Exact timestamp joins, explicit MW units, and stable WAPE formulations.",
+    "note": "Aggregations use all matched intervals. Missing intervals remain visible nulls.",
+    "narration": "All domain functions are pure and stateless, taking timezones and daylight saving boundaries into account. Forecasting metrics join on exact UTC timestamps. Missing intervals remain null rather than defaulting to zero, preventing distorted averages. Summary metrics aggregate matched half-hours directly rather than averaging daily scores. We compute WAPE as total absolute error divided by total actual generation, preventing division-by-zero anomalies during low wind periods. Empirical error percentiles require a minimum of seven prior days and 168 observations."
+  },
+  {
+    "part": 2,
+    "title": "Frontend engineering: Native React without build overhead",
+    "image": "11-correctness.png",
+    "crop_top": 0,
+    "takeaway": "Modern React hooks, native ES modules, and accessible SVG graphics.",
+    "note": "Zero external CDN dependencies. Gap-tolerant SVG charts with keyboard accessibility.",
+    "narration": "The frontend is engineered with React 18 using native ES modules and React createElement, completely bypassing unnecessary Node build pipelines for production simplicity. Custom SVG visualizations feature responsive viewBox scaling, gap-tolerant path drawing that breaks cleanly across unobserved intervals, and full keyboard navigation. Strict Content Security Policy headers restrict script execution strictly to self, with zero external CDN dependencies or tracking scripts."
+  },
+  {
+    "part": 2,
+    "title": "Quality assurance: Comprehensive automated test harness",
+    "image": "16-evidence.png",
+    "crop_top": 0,
+    "takeaway": "53 Python tests, 6 Node tests, and automated Playwright browser checks.",
+    "note": "94% Python statement coverage across domain, repository, ingest, and API routes.",
+    "narration": "Our verification harness includes 53 Python backend tests, achieving 94 percent statement coverage across domain logic, API routes, and ingestion edge cases. An additional 6 frontend tests validate time formatting and gap handling. Furthermore, automated Playwright Chromium smoke tests run against live HTTP endpoints, validating Content Security Policy headers, React mounting, interactive filters, CSV file downloads, and the OpenAPI documentation explorer."
+  },
+  {
+    "part": 2,
+    "title": "Production readiness: Multi-platform containerization",
+    "image": "14-release.png",
+    "crop_top": 0,
+    "takeaway": "Production Docker container, Compose profile, and Vercel serverless ready.",
+    "note": "Non-root security context, read-only data mounts, and built-in healthchecks.",
+    "narration": "For deployment, the codebase includes a hardened multi-stage Dockerfile that runs as an unprivileged non-root appuser, paired with Docker Compose configured with read-only data mounts, dropped capabilities, and active health checks on port 8000. For cloud hosting, vercel json defines an optimized serverless FastAPI deployment bundled with static assets and the real January data snapshot. Interactive Swagger and OpenAPI documentation is accessible at api slash docs."
+  },
+  {
+    "part": 2,
+    "title": "Submission handover: Fully verified pilot release",
+    "image": "14-release.png",
+    "crop_top": 0,
+    "takeaway": "Complete deliverable package with verified Elexon data and comprehensive README.",
+    "note": "Anonymous repo name k7m4q9. Ready for public GitHub, Vercel, and Microsoft form submission.",
+    "narration": "In summary, the project fulfills all assignment requirements: live ingestion of Elexon's WINDFOR and FUELHH streams for January 2026, rigorous decision-time forecasting and quantitative error evaluation, a polished React and Python web application, automated test coverage, Docker and Vercel deployment configurations, and this structured walkthrough video. The repository is packaged under the anonymous identifier k7m4q9 with complete documentation, ready for team review and client rollout. Thank you."
+  }
+]

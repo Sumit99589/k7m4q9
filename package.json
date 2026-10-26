@@ -1,0 +1,1 @@
+{"name":"k7m4q9","version":"1.0.0","private":true,"type":"module","description":"Build-free React 18 UI with vendored, checksummed runtime","scripts":{"test":"node --test frontend/tests/*.test.js","check":"node --check frontend/src/App.js && node --check frontend/src/utils.js","start":"python -m uvicorn app:app --host 0.0.0.0 --port 8000"},"engines":{"node":">=20"}}

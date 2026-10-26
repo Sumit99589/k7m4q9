@@ -1,0 +1,456 @@
+1
+00:00:00,250 --> 00:00:05,921
+Welcome to Windward, a pilot designed to
+make tomorrow's wind outlook clearer before the buying
+
+2
+00:00:05,921 --> 00:00:11,945
+decision. The promise is straightforward: see the
+forecast that was actually available at your chosen
+
+3
+00:00:11,945 --> 00:00:19,034
+cutoff, understand its limitations, and review its
+subsequent accuracy. One important disclosure: this walkthrough uses
+
+4
+00:00:19,034 --> 00:00:25,295
+clearly labelled synthetic test data because the
+authoring environment could not reach Elexon's data API.
+
+5
+00:00:25,295 --> 00:00:31,792
+It demonstrates working software and analysis logic,
+not measured January market results. This opening screen
+
+6
+00:00:31,792 --> 00:00:33,919
+refuses to invent a real data feed.
+
+7
+00:00:34,869 --> 00:00:39,725
+The decision desk starts with the date
+on which the team is buying. January decision
+
+8
+00:00:39,725 --> 00:00:44,696
+dates cover delivery from the second of
+January through the first of February. Set the
+
+9
+00:00:44,696 --> 00:00:50,581
+local decision cutoff and, optionally, an availability
+buffer. The curve then uses the latest eligible
+
+10
+00:00:50,581 --> 00:00:55,838
+publication for each delivery half hour. It
+does not use a better forecast published later.
+
+11
+00:00:55,838 --> 00:01:01,666
+The headline cards show forecast power, covered
+energy, coverage and age, so a complete-looking curve
+
+12
+00:01:01,666 --> 00:01:03,951
+cannot conceal stale or missing inputs.
+
+13
+00:01:04,901 --> 00:01:10,360
+Below the curve, the interval table makes
+the result inspectable. Each row shows the delivery
+
+14
+00:01:10,360 --> 00:01:16,516
+time, selected forecast, publication timestamp, age at
+the decision and change from its previous eligible
+
+15
+00:01:16,516 --> 00:01:21,568
+version. The export carries those same fields
+and a snapshot hash, giving an analyst a
+
+16
+00:01:21,568 --> 00:01:27,027
+reproducible trail from the screen to the
+underlying data. Different half hours may come from
+
+17
+00:01:27,027 --> 00:01:32,834
+different publication vintages. We make that visible
+rather than implying that the whole curve came
+
+18
+00:01:32,834 --> 00:01:34,693
+from one complete forecast run.
+
+19
+00:01:35,643 --> 00:01:41,411
+Turning on actuals deliberately changes the task
+from decision support to hindsight review. The actual
+
+20
+00:01:41,411 --> 00:01:46,115
+curve makes misses easy to see, while
+the warning reminds us that those values were
+
+21
+00:01:46,115 --> 00:01:51,212
+not available when the team bought power.
+Forecast minus actual is the error convention: a
+
+22
+00:01:51,212 --> 00:01:57,764
+positive value means wind underdelivered against the
+forecast. That direction matters. A consistent overforecast can
+
+23
+00:01:57,764 --> 00:02:03,140
+create a different operational concern from errors
+of the same average size in both directions.
+
+24
+00:02:04,090 --> 00:02:10,225
+The accuracy lab answers four complementary questions.
+Mean absolute error shows typical miss size. Root
+
+25
+00:02:10,225 --> 00:02:16,594
+mean squared error gives larger misses more
+weight. Bias shows direction. Weighted absolute percentage error
+
+26
+00:02:16,594 --> 00:02:22,729
+adds a relative measure without dividing each
+interval by near-zero wind. Coverage remains explicit. The
+
+27
+00:02:22,729 --> 00:02:29,331
+daily bars, hour-of-day profile and lead-time breakdown
+help locate where performance changes. Selecting a daily
+
+28
+00:02:29,331 --> 00:02:35,232
+bar returns to its decision snapshot. These
+displayed numbers illustrate the workflow only; they are
+
+29
+00:02:35,232 --> 00:02:36,926
+not January Elexon findings.
+
+30
+00:02:37,876 --> 00:02:44,111
+This deliberately incomplete test day demonstrates a
+crucial behaviour: missing forecasts stay as gaps, and
+
+31
+00:02:44,111 --> 00:02:49,538
+energy is labelled as a covered-interval total.
+The optional amber range also has an explicit
+
+32
+00:02:49,538 --> 00:02:55,658
+boundary. It uses only earlier January decisions
+and actual publications already available at the current
+
+33
+00:02:55,658 --> 00:03:01,662
+cutoff. Early January may therefore have insufficient
+history. Once enough history exists, the range is
+
+34
+00:03:01,662 --> 00:03:07,493
+still descriptive, not a guaranteed probability band
+or a recommendation to buy a particular volume.
+
+35
+00:03:08,443 --> 00:03:15,802
+The methodology page puts assumptions next to
+the analysis: source datasets, timestamp selection, metric definitions,
+
+36
+00:03:15,802 --> 00:03:22,039
+quality counts and provenance. The product uses
+only the specified wind forecast and actual series.
+
+37
+00:03:22,039 --> 00:03:27,777
+National wind is not the utility's contracted
+wind entitlement, and the app has no customer
+
+38
+00:03:27,777 --> 00:03:34,076
+demand, existing hedges or prices. It therefore
+does not claim a purchase quantity, thermal dispatch
+
+39
+00:03:34,076 --> 00:03:39,439
+requirement or cost saving. The value of
+this pilot is a clearer, auditable basis for
+
+40
+00:03:39,439 --> 00:03:41,747
+the team's forecast-risk discussion.
+
+41
+00:03:42,697 --> 00:03:48,550
+For pilot acceptance, the next gate is
+evidence rather than another dashboard feature: import the
+
+42
+00:03:48,550 --> 00:03:55,000
+real Elexon history, reconcile sample selections and
+errors, confirm the desk cutoff, and validate coverage
+
+43
+00:03:55,000 --> 00:04:01,211
+with the team. Then publish the accepted
+application and replace this illustrative results segment with
+
+44
+00:04:01,211 --> 00:04:08,796
+real findings. The implementation already separates a
+timely forecast view from retrospective evaluation, exposes uncertainty,
+
+45
+00:04:08,796 --> 00:04:13,633
+and preserves an audit trail. That is
+the customer workflow. I will now show the
+
+46
+00:04:13,633 --> 00:04:15,425
+engineering design behind it.
+
+47
+00:04:16,375 --> 00:04:22,739
+For the technical review, the architecture is
+intentionally small. React provides the three product views.
+
+48
+00:04:22,739 --> 00:04:28,449
+FastAPI exposes read-only analysis and CSV routes
+and serves the frontend from the same origin.
+
+49
+00:04:28,449 --> 00:04:34,456
+A separate Python importer builds an immutable
+historical snapshot. A fixed one-month pilot does not
+
+50
+00:04:34,456 --> 00:04:40,403
+need a database, message broker or request-time
+data fetching. The main design priority is temporal
+
+51
+00:04:40,403 --> 00:04:45,756
+correctness: the definition of what was known
+must be enforced in the backend, not merely
+
+52
+00:04:45,756 --> 00:04:47,659
+described by a dashboard label.
+
+53
+00:04:48,609 --> 00:04:56,032
+The importer fetches publication-day windows, retains raw
+responses with request metadata and hashes, validates records,
+
+54
+00:04:56,032 --> 00:05:02,105
+and atomically replaces the accepted snapshot. It
+retries transient failures but does not treat an
+
+55
+00:05:02,105 --> 00:05:10,263
+error response as an empty successful dataset.
+Exact duplicates collapse; conflicting target-and-publication values are quarantined.
+
+56
+00:05:10,263 --> 00:05:15,907
+The repository layer verifies source mode and
+adds the snapshot hash. The live API contract
+
+57
+00:05:15,907 --> 00:05:22,225
+still needs a successful network validation. The
+current importer tests exercise mock responses, not a
+
+58
+00:05:22,225 --> 00:05:24,065
+hidden real January download.
+
+59
+00:05:25,015 --> 00:05:30,215
+These are actual source excerpts from the
+domain module. For each target, the forecast list
+
+60
+00:05:30,215 --> 00:05:35,811
+is filtered by the buffered decision cutoff
+before selecting its last eligible version. The actual
+
+61
+00:05:35,811 --> 00:05:41,577
+lookup has a separate availability guard: the
+interval must be complete, and the actual's publication
+
+62
+00:05:41,577 --> 00:05:46,721
+must be no later than the permitted
+time. This matters because filtering only the delivery
+
+63
+00:05:46,721 --> 00:05:52,713
+date would still leak later corrections. Retrospective
+scoring deliberately uses the latest actual in the
+
+64
+00:05:52,713 --> 00:05:56,330
+fetched window and states that this is not settlement finality.
+
+65
+00:05:57,280 --> 00:06:03,586
+Metrics operate on exact matched timestamps. Missing
+values remain null, zero remains valid, and aggregate
+
+66
+00:06:03,586 --> 00:06:10,303
+scores use all matched intervals rather than
+averaging rounded daily summaries. Energy multiplies half-hour power
+
+67
+00:06:10,303 --> 00:06:15,607
+by half an hour. The prior-only range
+uses earlier January decisions, with both a minimum
+
+68
+00:06:15,607 --> 00:06:22,501
+number of days and intervals. These thresholds
+are transparent heuristics, not statistical guarantees. Adjacent half
+
+69
+00:06:22,501 --> 00:06:29,396
+hours are correlated, and no out-of-sample interval
+calibration or monetary optimisation is claimed. The methodology
+
+70
+00:06:29,396 --> 00:06:31,989
+document makes those boundaries reviewable.
+
+71
+00:06:32,939 --> 00:06:38,861
+The frontend uses React hooks, native JavaScript
+modules and SVG charts. It does not reimplement
+
+72
+00:06:38,861 --> 00:06:45,150
+forecast selection. Request identity checks prevent an
+old response from rendering in a newly selected
+
+73
+00:06:45,150 --> 00:06:50,645
+tab, and chart paths break across missing
+intervals. Exact data is available in the table
+
+74
+00:06:50,645 --> 00:06:57,117
+and CSV. One dependency caveat is explicit:
+offline authoring required a locally available React runtime,
+
+75
+00:06:57,117 --> 00:07:03,649
+whose ReactDOM build has a prerelease identifier.
+Replace it with matching audited maintained packages and
+
+76
+00:07:03,649 --> 00:07:06,946
+rerun the browser suites before a production release.
+
+77
+00:07:07,896 --> 00:07:15,410
+The executed checks include fifty-three Python tests,
+six JavaScript tests and thirteen Chromium assertions. Python
+
+78
+00:07:15,410 --> 00:07:23,377
+statement coverage rounds to ninety-four percent. Adversarial
+tests cover late revisions, exact cutoff boundaries, missing
+
+79
+00:07:23,377 --> 00:07:31,409
+versus zero values, corrupted caches, incomplete coverage
+and the January-to-February boundary. Browser checks exercise the
+
+80
+00:07:31,409 --> 00:07:38,210
+actual React components against FastAPI through a
+local test bridge. Because this sandbox blocks browser
+
+81
+00:07:38,210 --> 00:07:44,364
+HTTP navigation, that is not a full
+HTTP or security-policy test. Separate HTTP, container and
+
+82
+00:07:44,364 --> 00:07:47,862
+hosted checks are supplied but not claimed as passed.
+
+83
+00:07:48,812 --> 00:07:55,581
+The handover includes a non-root Dockerfile, read-only
+Compose data mount, Vercel FastAPI configuration and a
+
+84
+00:07:55,581 --> 00:08:02,781
+prepared continuous-integration workflow. The app reads a
+fixed snapshot; replacing that snapshot requires a restart
+
+85
+00:08:02,781 --> 00:08:08,997
+or redeployment. Docker and Vercel are separate
+delivery paths, and neither is described as executed
+
+86
+00:08:08,997 --> 00:08:15,397
+here. The repository guide maps each file,
+gives startup and testing commands, discloses AI assistance,
+
+87
+00:08:15,397 --> 00:08:21,305
+and lists known limitations. A local API
+explorer and this technical review page make knowledge
+
+88
+00:08:21,305 --> 00:08:24,628
+transfer easier without external script dependencies.
+
+89
+00:08:25,578 --> 00:08:31,474
+The remaining release gates are explicit: accept
+real Elexon data, audit the runtime, execute the
+
+90
+00:08:31,474 --> 00:08:37,551
+container and HTTP checks, create the anonymous
+public GitHub repository, deploy the app, and upload
+
+91
+00:08:37,551 --> 00:08:42,906
+the reviewed video as unlisted. Open all
+three submitted links in a fresh private window
+
+92
+00:08:42,906 --> 00:08:48,982
+and play the complete video before submitting
+the Microsoft form. Those account-based steps have not
+
+93
+00:08:48,982 --> 00:08:55,962
+occurred in this environment. The supplied code,
+tests, documentation and walkthrough provide the handover, without
+
+94
+00:08:55,962 --> 00:09:00,474
+inventing successful publishing actions
+or real-market results. Thank you.

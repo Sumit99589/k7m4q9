@@ -1,0 +1,20 @@
+{
+  "transport": "Chromium about:blank + FastAPI TestClient bridge; not deployed HTTP",
+  "assertions": [
+    "Real mode shows explicit missing-data state, not fake metrics",
+    "Explicit opt-in loads synthetic decision view",
+    "Actuals require an explicit hindsight toggle",
+    "31 January decision shows 1 February delivery",
+    "Early January does not use future error history",
+    "Missing forecast intervals are flagged; energy is partial",
+    "Retrospective metrics and charts render",
+    "Accuracy CSV uses synthetic source and explicitly requests hindsight",
+    "Accuracy bar drills into the correct decision",
+    "Cutoff and availability buffer update the snapshot",
+    "Provenance and methodology screen renders",
+    "390px mobile layout has no horizontal page overflow",
+    "No uncaught browser JavaScript exceptions"
+  ],
+  "passed": 13,
+  "browser_errors": []
+}

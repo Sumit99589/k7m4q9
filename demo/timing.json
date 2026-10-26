@@ -1,0 +1,125 @@
+{
+  "duration_seconds": 541.174,
+  "parts_seconds": {
+    "1": 256.124,
+    "2": 285.05
+  },
+  "voice": "eSpeak en-gb, synthetic",
+  "data": "Synthetic test data; not Elexon observations",
+  "screen_source": "Actual application and review-page captures; offline ASGI browser harness",
+  "caption_timing": "Approximate proportional timing against synthesized audio; review before publication",
+  "chapters": [
+    {
+      "scene": 1,
+      "part": 1,
+      "title": "A clearer decision, without hindsight",
+      "start_seconds": 0.0,
+      "duration_seconds": 34.619
+    },
+    {
+      "scene": 2,
+      "part": 1,
+      "title": "Start with the decision, not the latest revision",
+      "start_seconds": 34.619,
+      "duration_seconds": 30.033
+    },
+    {
+      "scene": 3,
+      "part": 1,
+      "title": "Inspect the evidence behind the curve",
+      "start_seconds": 64.651,
+      "duration_seconds": 30.741
+    },
+    {
+      "scene": 4,
+      "part": 1,
+      "title": "Separate decision support from hindsight",
+      "start_seconds": 95.393,
+      "duration_seconds": 28.447
+    },
+    {
+      "scene": 5,
+      "part": 1,
+      "title": "Evaluate accuracy in more than one number",
+      "start_seconds": 123.84,
+      "duration_seconds": 33.786
+    },
+    {
+      "scene": 6,
+      "part": 1,
+      "title": "Show uncertainty and gaps honestly",
+      "start_seconds": 157.626,
+      "duration_seconds": 30.566
+    },
+    {
+      "scene": 7,
+      "part": 1,
+      "title": "Make trust inspectable",
+      "start_seconds": 188.193,
+      "duration_seconds": 34.254
+    },
+    {
+      "scene": 8,
+      "part": 1,
+      "title": "The pilot acceptance decision",
+      "start_seconds": 222.447,
+      "duration_seconds": 33.678
+    },
+    {
+      "scene": 9,
+      "part": 2,
+      "title": "Engineering review: a deliberately small system",
+      "start_seconds": 256.125,
+      "duration_seconds": 32.234
+    },
+    {
+      "scene": 10,
+      "part": 2,
+      "title": "Keep ingestion outside the request path",
+      "start_seconds": 288.359,
+      "duration_seconds": 36.406
+    },
+    {
+      "scene": 11,
+      "part": 2,
+      "title": "Review the two availability checks",
+      "start_seconds": 324.765,
+      "duration_seconds": 32.265
+    },
+    {
+      "scene": 12,
+      "part": 2,
+      "title": "Make the analysis contract testable",
+      "start_seconds": 357.03,
+      "duration_seconds": 35.659
+    },
+    {
+      "scene": 13,
+      "part": 2,
+      "title": "The frontend stays a presentation layer",
+      "start_seconds": 392.689,
+      "duration_seconds": 34.958
+    },
+    {
+      "scene": 14,
+      "part": 2,
+      "title": "Verify the failure modes, not just the happy path",
+      "start_seconds": 427.646,
+      "duration_seconds": 40.915
+    },
+    {
+      "scene": 15,
+      "part": 2,
+      "title": "Package once; verify each deployment path",
+      "start_seconds": 468.562,
+      "duration_seconds": 36.766
+    },
+    {
+      "scene": 16,
+      "part": 2,
+      "title": "Close with an honest submission checklist",
+      "start_seconds": 505.328,
+      "duration_seconds": 35.847
+    }
+  ]
+}
